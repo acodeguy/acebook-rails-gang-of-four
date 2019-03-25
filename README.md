@@ -24,3 +24,7 @@ First, clone this repository. Then:
 > bundle exec rspec # Run the tests to ensure it works
 > bin/rails server # Start the server at localhost:3000
 ```
+
+## Trello board
+
+https://trello.com/b/Q7ByP6kt/acebook-gang-of-four
