@@ -1,18 +1,14 @@
 # AceBook [![Build Status](https://travis-ci.org/acodeguy/acebook-rails-gang-of-four.svg?branch=master)](https://travis-ci.org/acodeguy/acebook-rails-gang-of-four)
 
-REQUIRED INSTRUCTIONS:
-
-1. Fork this repository to `acebook-teamname` and customize
-the below**
-
-[You can find the engineering project outline here.](https://github.com/makersacademy/course/tree/master/engineering_projects/rails)
-
-2. The card wall is here: <please update>
-
-## How to contribute to this project
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+## Technologies
+- Ruby on Rails 5.1.1
+- Heroku
+- Travis CI
 
 ## Quickstart
+
+### For Developers
+---
 
 First, clone this repository. Then:
 
@@ -24,6 +20,10 @@ First, clone this repository. Then:
 > bundle exec rspec # Run the tests to ensure it works
 > bin/rails server # Start the server at localhost:3000
 ```
+
+### For Users
+---
+See the project: [Acebook - Gang of Four](https://acebook-gang-of-four.herokuapp.com)
 
 ## Trello board
 
