@@ -1,18 +1,8 @@
 # AceBook
 
-REQUIRED INSTRUCTIONS:
+Second team project at the Maker's academy - a Facebook clone, where users can login and make posts. 
 
-1. Fork this repository to `acebook-teamname` and customize
-the below**
-
-[You can find the engineering project outline here.](https://github.com/makersacademy/course/tree/master/engineering_projects/rails)
-
-2. The card wall is here: <please update>
-
-## How to contribute to this project
-See [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## Quickstart
+## How to run
 
 First, clone this repository. Then:
 
@@ -25,6 +15,14 @@ First, clone this repository. Then:
 > bin/rails server # Start the server at localhost:3000
 ```
 
-## Trello board
+## Dev ops and deployment
+
+We have two key branches, staging and master. We create branches for each feature from staging, and then merge to staging from each feature branch after each passing unit test. 
+
+Once we have enough functionality for a release (e.g. a new feature as been added), we will push it to master. This will trigger CI on Travis, which will then push it to the production environment on Heroku if the tests pass. 
+
+## Trello board with user stories
 
 https://trello.com/b/Q7ByP6kt/acebook-gang-of-four
+
+
