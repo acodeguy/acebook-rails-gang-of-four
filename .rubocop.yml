@@ -172,7 +172,7 @@ SpaceInsideStringInterpolation:
 SymbolLiteral:
   Enabled: true
 TrailingBlankLines:
-  Enabled: true
+  Enabled: false
 TrivialAccessors:
   Enabled: true
 
