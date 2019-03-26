@@ -636,6 +636,19 @@
         null,
         null,
         null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/andrew/Makers/week08/acebook-rails-gang-of-four/spec/features/user_can_submit_posts_spec.rb": [
@@ -670,6 +683,6 @@
         null
       ]
     },
-    "timestamp": 1553608230
+    "timestamp": 1553608602
   }
 }
