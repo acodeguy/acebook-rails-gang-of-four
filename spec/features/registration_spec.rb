@@ -38,4 +38,15 @@ RSpec.feature "Registration", type: :feature do
 
   end
 
+  scenario "Email must be a valid email address" do
+    visit "/users/sign_up"
+    
+    fill_in "user_email", with: "simon.com"
+    fill_in "user_password", with: "secrets"
+    fill_in "user_password_confirmation", with: "secrets"
+
+    click_button "Sign up"
+    expect(page).to have_content('Email is invalid')
+  end
+
 end
