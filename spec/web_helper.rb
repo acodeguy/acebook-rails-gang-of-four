@@ -13,3 +13,8 @@ def sign_in(email:, password:)
   fill_in "user_password", with: password
   click_button "Log in"
 end
+
+def create_post(message:)
+  Post.create(message: message)
+  visit "/posts"
+end
