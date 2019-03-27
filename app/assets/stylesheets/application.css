@@ -16,3 +16,13 @@
 .post {
   white-space: pre-line
 }
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.body-content {
+  display: flex;
+  flex-flow: column;
+}
