@@ -1,7 +1,15 @@
 def sign_up_and_sign_in
-  User.create(email: "simon@simon.com", password: "secrets", password_confirmation: "secrets")
+  create_user(email: "simon@simon.com", password: "secrets")
+  sign_in(email: "simon@simon.com", password: "secrets")
+end
+
+def create_user(email:, password:)
+  User.create(email: email, password: password, password_confirmation: password)
+end
+
+def sign_in(email:, password:)
   visit "/users/sign_in"
-  fill_in "user_email", with: "simon@simon.com"
-  fill_in "user_password", with: "secrets"
+  fill_in "user_email", with: email
+  fill_in "user_password", with: password
   click_button "Log in"
 end
