@@ -9,4 +9,12 @@ RSpec.feature "Timeline", type: :feature do
     click_button "Submit" 
     expect(page).to have_content("Hello, world!")
   end
+
+  scenario "Can submit posts and view them" do
+    sign_up_and_sign_in
+    create_post(message: 'This is the first post')
+    create_post(message: 'This is the second post')
+    expect(page.first('.post')).to have_content('This is the second post')
+  end
+
 end
