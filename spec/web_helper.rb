@@ -15,6 +15,7 @@ def sign_in(email:, password:)
 end
 
 def create_post(message:)
-  Post.create(message: message)
+  post = Post.create(message: message)
   visit "/posts"
+  post
 end
