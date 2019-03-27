@@ -14,7 +14,7 @@ def sign_in(email:, password:)
   click_button "Log in"
 end
 
-def create_post(message:)
+def create_then_view_posts(message:)
   post = Post.create(message: message)
   visit "/posts"
   post

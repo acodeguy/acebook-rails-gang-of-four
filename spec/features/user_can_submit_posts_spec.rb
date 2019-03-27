@@ -12,19 +12,18 @@ RSpec.feature "Timeline", type: :feature do
 
   scenario "Can submit multiple posts and view them in descending date" do
     sign_up_and_sign_in
-    create_post(message: 'This is the first post')
-    create_post(message: 'This is the second post')
+    create_then_view_posts(message: 'This is the first post')
+    create_then_view_posts(message: 'This is the second post')
     expect(page.first('.post')).to have_content('This is the second post')
   end
 
   scenario "Displayed post includes posted date" do
     sign_up_and_sign_in
-    post = create_post(message: 'THEY TOOK OURRRR JAAAABBBS!')
+    post = create_then_view_posts(message: 'THEY TOOK OURRRR JAAAABBBS!')
     expected_posted_date = post.created_at.strftime(
       '%e %B %Y %l:%M %p'
     )
 
-    visit "/posts"
     expect(page).to have_content(expected_posted_date)
   end
 end
