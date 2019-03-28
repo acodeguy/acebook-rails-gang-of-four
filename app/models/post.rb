@@ -6,8 +6,12 @@ class Post < ApplicationRecord
   end
 
   def can_update?(person)
-    ten_minutes_ago = DateTime.now - (1/24.0/6)
-    belongs_to?(person) && self.created_at > ten_minutes_ago
+    belongs_to?(person) && created_within_last(minutes: 10)
+  end
+
+  def created_within_last(minutes:)
+    ten_minutes_ago = DateTime.now - (1/24.0/60 * minutes)
+    self.created_at > ten_minutes_ago
   end
 
   def can_delete?(person)

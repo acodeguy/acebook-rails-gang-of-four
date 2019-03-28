@@ -22,8 +22,8 @@ RSpec.feature "Update Posts", type: :feature do
   scenario 'Cannot update a post after 10 minutes' do
 
     user = create_user_and_sign_in
-    post_time = DateTime.now - (1/24.0/6)
-    Post.create(message: 'Message with a given timestamp', user_id: user.id, created_at: post_time)
+    ten_mins_ago = DateTime.now - (1/24.0/6)
+    Post.create(message: 'Message with a given timestamp', user_id: user.id, created_at: ten_mins_ago)
     visit '/posts'
     expect(page).not_to have_selector('.update')
   end
