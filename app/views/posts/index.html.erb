@@ -1,13 +1,21 @@
 <% @posts.each do |post| %>
-  <p class='post'><%= post.message %></p>
-  <div><%= post.formatted_created_at %></div>
+  <div class="card" style="background-color: #B5DFCA; margin-bottom: 20px">
+    <div class="card-header">
+      <h4><%= current_user.email%></h4>
+      <h4><%= post.formatted_created_at %></h4>
+    </div>
 
-  <% if post.can_update?(current_user) %>
-    <%= button_to 'Update', edit_post_path(post), method: :get, :class => 'update' %>
-  <% end %>
-  <% if post.can_delete?(current_user) %>
-    <%= button_to 'Delete', post_path(post), method: :delete, :class => 'delete' %>
-  <% end %>
+    <div class="card-body" style="background-color: white">
+      <p class='post'><%= post.message %></p>
+
+      <% if post.can_update?(current_user) %>
+        <%= button_to 'Update', edit_post_path(post), method: :get, :class => 'update btn btn-outline-primary' %>
+      <% end %>
+      <% if post.can_delete?(current_user) %>
+        <%= button_to 'Delete', post_path(post), method: :delete, :class => 'delete btn btn-outline-primary' %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 
 <%= link_to new_post_path do %>
