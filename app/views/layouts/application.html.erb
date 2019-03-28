@@ -9,8 +9,14 @@
   </head>
 
   <body>
+  <div class='body-content'>
+    <div class="navbar">
+       <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+    </div>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    </div>
   </body>
 </html>
