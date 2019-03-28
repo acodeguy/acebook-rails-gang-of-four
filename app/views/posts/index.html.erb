@@ -1,7 +1,9 @@
 <% @posts.each do |post| %>
   <p class='post'><%= post.message %></p>
   <div><%= post.formatted_created_at %></div>
-  <%= button_to 'Update', edit_post_path(post), method: :get %>
+  <% if post.belongs_to?(current_user) %>
+    <%= button_to 'Update', edit_post_path(post), method: :get, :class => 'update' %>
+  <% end %>
   <%= button_to 'Delete', post_path(post), method: :delete %>
 <% end %>
 

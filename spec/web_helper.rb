@@ -1,6 +1,7 @@
-def sign_up_and_sign_in
-  create_user(email: "simon@simon.com", password: "secrets")
-  sign_in(email: "simon@simon.com", password: "secrets")
+def create_user_and_sign_in(email: "simon@simon.com", password: "secrets")
+  user = create_user(email: email, password: password)
+  sign_in(email: email, password: password)
+  user 
 end
 
 def create_user(email:, password:)
@@ -14,8 +15,8 @@ def sign_in(email:, password:)
   click_button "Log in"
 end
 
-def create_then_view_posts(message:)
-  post = Post.create(message: message)
+def create_then_view_posts(message:, user_id:)
+  post = Post.create(message: message, user_id: user_id)
   visit "/posts"
   post
 end

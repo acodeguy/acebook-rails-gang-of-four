@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Timeline", type: :feature do
   scenario "Can submit posts and view them" do
-    sign_up_and_sign_in
+    create_user_and_sign_in
     visit "/posts"
     click_link "New post"
     fill_in "Message", with: "Hello, world!"
@@ -11,15 +11,15 @@ RSpec.feature "Timeline", type: :feature do
   end
 
   scenario "Can submit multiple posts and view them in descending date" do
-    sign_up_and_sign_in
-    create_then_view_posts(message: 'This is the first post')
-    create_then_view_posts(message: 'This is the second post')
+    user = create_user_and_sign_in
+    create_then_view_posts(message: 'This is the first post', user_id: user.id)
+    create_then_view_posts(message: 'This is the second post', user_id: user.id)
     expect(page.first('.post')).to have_content('This is the second post')
   end
 
   scenario "Displayed post includes posted date" do
-    sign_up_and_sign_in
-    post = create_then_view_posts(message: 'THEY TOOK OURRRR JAAAABBBS!')
+    user = create_user_and_sign_in
+    post = create_then_view_posts(message: 'THEY TOOK OURRRR JAAAABBBS!', user_id: user.id)
     expected_posted_date = post.created_at.strftime(
       '%e %B %Y %l:%M %p'
     )
