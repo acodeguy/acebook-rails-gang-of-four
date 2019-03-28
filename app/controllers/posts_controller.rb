@@ -14,6 +14,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    p "we are here!"
+    p "posts #{@posts}"
   end
 
   def update
