@@ -58,6 +58,9 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
+    debase (0.2.2)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.4)
     devise (4.6.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -167,6 +170,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.6)
+    ruby-debug-ide (0.6.1)
+      rake (>= 0.8.1)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
@@ -229,6 +234,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara (~> 2.13)
+  debase
   devise
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
@@ -238,6 +244,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails (~> 3.5)
   rubocop
+  ruby-debug-ide
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers

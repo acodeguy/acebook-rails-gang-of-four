@@ -1,5 +1,6 @@
 <% @posts.each do |post| %>
-  <p><%= post.message %></p>
+  <p class='post'><%= post.message %></p>
+  <div><%= post.formatted_created_at %></div>
   <% if post.belongs_to?(current_user) %>
     <%= button_to 'Update', edit_post_path(post), method: :get, :class => 'update' %>
   <% end %>

@@ -10,4 +10,14 @@ RSpec.describe Post, type: :model do
     expect(post.belongs_to?(99)).to be(false)
     expect(post.belongs_to?(user)).to be(true)
   end
+
+  it 'should include created_at time in formatted form' do
+    user = User.create(email: "s@s.com", password: "111111", password_confirmation: "111111")
+    post = Post.create(message: 'New post', user_id: user.id)
+    exp_created_at = post.created_at.strftime(
+      '%e %B %Y %l:%M %p'
+    )
+
+    expect(post.formatted_created_at).to eq(exp_created_at)
+  end
 end
