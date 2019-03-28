@@ -13,11 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
 .post {
   white-space: pre-line
 }
 
-body {
+.body-body {
   display: flex;
   justify-content: center;
 }
