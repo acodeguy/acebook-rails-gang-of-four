@@ -1,4 +1,4 @@
-def sign_up_and_sign_in(email: "simon@simon.com", password: "secrets")
+def create_user_and_sign_in(email: "simon@simon.com", password: "secrets")
   user = create_user(email: email, password: password)
   sign_in(email: email, password: password)
   user 

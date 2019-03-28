@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Sign_In", type: :feature do
 
   scenario "Can sign in if email is valid" do
-    sign_up_and_sign_in
+    create_user_and_sign_in
     expect(page).to have_content("Signed in successfully")
   end
 

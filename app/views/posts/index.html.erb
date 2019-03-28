@@ -1,7 +1,7 @@
 <% @posts.each do |post| %>
   <p><%= post.message %></p>
   <% if post.belongs_to?(current_user) %>
-  <%= button_to 'Update', edit_post_path(post), method: :get, :class => 'update' %>
+    <%= button_to 'Update', edit_post_path(post), method: :get, :class => 'update' %>
   <% end %>
   <%= button_to 'Delete', post_path(post), method: :delete %>
 <% end %>
