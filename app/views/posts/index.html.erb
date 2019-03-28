@@ -1,10 +1,12 @@
 <% @posts.each do |post| %>
   <p class='post'><%= post.message %></p>
   <div><%= post.formatted_created_at %></div>
-  <% if post.belongs_to?(current_user) %>
+  <% if post.can_update?(current_user) %>
     <%= button_to 'Update', edit_post_path(post), method: :get, :class => 'update' %>
   <% end %>
-  <%= button_to 'Delete', post_path(post), method: :delete %>
+  <% if post.can_delete?(current_user) %>
+    <%= button_to 'Delete', post_path(post), method: :delete, :class => 'delete' %>
+  <% end %>
 <% end %>
 
 <%= link_to new_post_path do %>
