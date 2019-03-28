@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post= current_user.posts.create(post_params)
+    @post = current_user.posts.create(post_params)
     redirect_to posts_url
   end
 
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update(post_params)
+    post.update(post_params, current_user)
     redirect_to posts_url
   end
 
