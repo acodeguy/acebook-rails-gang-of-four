@@ -11,4 +11,12 @@ RSpec.feature "Update Posts", type: :feature do
     
     expect(page).to have_content('Post updated')
   end
+
+  scenario 'Cannot update the posts of other users' do
+    user1 = create_user(email: 'user1@example.com', password: 'password')
+    create_post(message: 'User One has written this.', user_id: user1.id)
+    user2 = sign_up_and_sign_in(email: 'user2@example.com', password: 'password')  
+    expect(page).not_to have_selector('.update')
+  end
+
 end
