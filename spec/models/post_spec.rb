@@ -6,7 +6,7 @@ RSpec.describe Post, type: :model do
 
   it('knows whether it belongs to a given user') do
     user = User.create(email: "s@s.com", password: "111111", password_confirmation: "111111")
-    post = Post.new(:message => 'a dull post', :user => user)
+    post = Post.create(:message => 'a dull post', :user => user)
     expect(post.can_update?(99)).to be(false)
     expect(post.can_update?(user)).to be(true)
   end
@@ -19,5 +19,11 @@ RSpec.describe Post, type: :model do
     )
 
     expect(post.formatted_created_at).to eq(exp_created_at)
+  end
+
+  it 'allows updating only within 10 minutes of posting' do
+    user = User.create(email: "s@s.com", password: "111111", password_confirmation: "111111")
+    post = Post.create(message: 'New post', user_id: user.id, created_at: DateTime.now - (1/24.0/6))
+    expect { post.update({ message: 'This has been updated.' }, user ) }.to raise_error 'Post can no longer be edited'
   end
 end
