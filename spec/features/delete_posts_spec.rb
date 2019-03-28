@@ -11,7 +11,7 @@ RSpec.feature "Delete Posts", type: :feature do
   scenario 'Cannot delete the posts of other users' do
     user1 = create_user(email: 'user1@example.com', password: 'password')
     create_then_view_posts(message: 'User One has written this.', user_id: user1.id)
-    user2 = create_user_and_sign_in
+    create_user_and_sign_in
     expect(page).not_to have_selector('.delete')
   end
 end
