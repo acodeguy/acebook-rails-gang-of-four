@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   end
 
   def index
-    p 'POSTS CALLED'
     @posts = Post.order("created_at DESC").all
   end
 
