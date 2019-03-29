@@ -119,6 +119,7 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.5)
+    rack-cors (1.0.3)
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.1.5)
@@ -252,6 +253,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails
   bootstrap (~> 4.3.1)
   byebug
   capybara (~> 2.13)
@@ -263,6 +265,7 @@ DEPENDENCIES
   nokogiri
   pg
   puma (~> 3.7)
+  rack-cors
   rails (~> 5.1.1)
   rails-controller-testing
   rspec-rails (~> 3.5)
