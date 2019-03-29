@@ -13,11 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
 .post {
   white-space: pre-line
 }
 
-body {
+.body-body {
   display: flex;
   justify-content: center;
 }
@@ -25,4 +26,28 @@ body {
 .body-content {
   display: flex;
   flex-flow: column;
+}
+
+.navbar-brand {
+  color: #20c997;
+  font-weight: bold;
+  font-size: x-large
+}
+
+.navbar-brand:hover {
+  color: #0a835f;
+  font-weight: bold;
+  font-size: x-large
+}
+
+.btn-outline-primary {
+  color: #20c997;
+  background-color: white;
+  border-color:  #20c997;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited {
+  background-color: #20c997;
+  color: white;
+  border-color:  white;
 }
