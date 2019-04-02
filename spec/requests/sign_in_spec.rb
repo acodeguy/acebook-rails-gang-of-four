@@ -6,7 +6,7 @@ describe "When requesting to sign in," do
   end
   context "if the user details are valid", type: :request do
     before do
-      post '/auth/sign_in', params: { email: 't@t.com', password: '123456'}
+      post '/auth/sign_in', params: { email: 't@t.com', password: '123456' }
     end
 
     it 'returns status code 200' do
