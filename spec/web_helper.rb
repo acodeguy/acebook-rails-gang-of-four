@@ -8,6 +8,18 @@ def create_user(email:, password:)
   User.create(email: email, password: password, password_confirmation: password)
 end
 
+def register(email: "simon@simon.com", password: "secrets")
+  post '/auth', params: { email: email, password: password, password_confirmation: password }
+
+  user_auth = {}
+  user_auth[:token] = response.header['access-token']
+  user_auth[:client] = response.header['client']
+  user_auth[:user_id] = JSON.parse(response.body)['data']['id']
+  user_auth[:email] = email
+
+  user_auth
+end
+
 def sign_in(email:, password:)
   visit "/users/sign_in"
   fill_in "user_email", with: email
