@@ -8,8 +8,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(post_params)
-    redirect_to posts_url
+    user = User.find(post_params[:user_id])
+    @post = user.posts.create(post_params)
+    render json: @post
   end
 
   def index
@@ -30,6 +31,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:message)
+    params.require(:post).permit(:message, :user_id)
   end
 end
