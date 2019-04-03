@@ -1,20 +1,38 @@
 require 'rails_helper'
 
-RSpec.feature "Sign_In", type: :feature do
+describe "When requesting to sign in," do
+  before do
+    post '/auth', params: { email: 't@t.com', password: '123456', password_confirmation: '123456'}
+  end
+  context "if the user details are valid", type: :request do
+    before do
+      post '/auth/sign_in', params: { email: 't@t.com', password: '123456' }
+    end
 
-  scenario "Can sign in if email is valid" do
-    create_user_and_sign_in
-    expect(page).to have_content("Signed in successfully")
+    it 'returns status code 200' do
+      expect(response.status).to eq(200)
+    end  
+
+    it 'returns an access token when successful' do
+      expect(response.header).to include('access-token')
+    end
+
+    it 'returns a client ID when successful' do
+      expect(response.header).to include('client')
+    end
   end
 
-  scenario "Redirects to login page if user is not signed in" do
-    visit "/posts"
-    expect(page).to have_content("Log in")
-  end
+  context "if the user details are not valid", type: :request do
+    it 'when the password is incorrect' do
+      post '/auth/sign_in', params: { email: 't@t.com', password: '1234567' }
+      expected_outcome = 'Invalid login credentials. Please try again.'
+      expect(JSON.parse(response.body)['errors'].pop).to eq(expected_outcome)
+    end
 
-  scenario "Redirects to sign up page when user selects sign up" do
-    visit "/users/sign_in"
-    click_on('Sign up')
-    expect(page.current_path).to eq('/users/sign_up')
+    it 'when the username is incorrect' do
+      post '/auth/sign_in', params: { email: 't@t1.com', password: '123456' }
+      expected_outcome = 'Invalid login credentials. Please try again.'
+      expect(JSON.parse(response.body)['errors'].pop).to eq(expected_outcome)
+    end
   end
 end
