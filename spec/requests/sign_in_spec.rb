@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe "When requesting to sign in," do
   before do
-    post '/auth', params: { email: 't@t.com', password: '123456', password_confirmation: '123456'}
+    register(email: 't@t.com', password: '123456')
   end
+  
   context "if the user details are valid", type: :request do
     before do
       post '/auth/sign_in', params: { email: 't@t.com', password: '123456' }

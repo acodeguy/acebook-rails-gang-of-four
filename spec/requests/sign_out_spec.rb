@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "When requesting to sign out of a user account" do
   before do
-    post '/auth', params: { email: 't@t.com', password: '123456', password_confirmation: '123456'}
+    register
   end
 
   it 'signs out successfully' do
