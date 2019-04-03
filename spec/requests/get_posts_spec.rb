@@ -17,7 +17,6 @@ describe "When requesting all posts," do
       end
   
       it 'returns a list of posts when successful' do
-        p "posts response #{response.body}"
          expect(response.body).to include('Hi')
       end
   

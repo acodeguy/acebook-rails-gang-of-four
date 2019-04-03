@@ -15,8 +15,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order("created_at DESC").all
-    render json: @posts 
-    
+    render json: @posts, :include => {:user => {:only => :email}} 
   end
 
   def update
