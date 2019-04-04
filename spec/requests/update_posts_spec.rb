@@ -5,19 +5,16 @@ RSpec.feature "Update Posts", type: :request do
   before do
     user_auth = register
 
-    Post.create(message: "A post, yo!", user_id: user_auth[:user_id])
+    post = Post.create(message: "A post, yo!", user_id: user_auth[:user_id])
 
-    @posts = Post.all
-    @id = @posts.first.id
-
-    patch "/posts/#{@id}", params: { 
-      post: { message: 'Post updated', id: @id }, 
+    patch "/posts/#{post.id}", params: { 
+      post: { message: 'Post updated', id: post.id }, 
       'access-token': user_auth[:token], 
       client: user_auth[:client], 
       uid: user_auth[:email] 
     }
 
-    @post = Post.find(@id)
+    @post = Post.find(post.id)
   end
 
   scenario "Can update a post from the timeline" do 
