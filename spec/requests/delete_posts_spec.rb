@@ -1,17 +1,24 @@
 require 'rails_helper'
 
-RSpec.feature "Delete Posts", type: :feature do
-  scenario "Can delete a post from the timeline" do
-    user = create_user_and_sign_in
-    create_then_view_posts(message: 'This is a post', user_id: user.id)
-    click_button "Delete"
-    expect(page).not_to have_content('This is a post')
+RSpec.feature "Delete post", type: :request do
+  before do
+    user_auth = register
+
+    post = Post.create(message: "A post, yo!", user_id: user_auth[:user_id])
+
+    delete "/posts/#{post.id}", params: { 
+      id: post.id,       
+      'access-token': user_auth[:token], 
+      client: user_auth[:client], 
+      uid: user_auth[:email]  
+    }
+  end
+  
+  scenario "Returns 204 status when post deleted" do
+    expect(response.status).to eq(204)
   end
 
-  scenario 'Cannot delete the posts of other users' do
-    user1 = create_user(email: 'user1@example.com', password: 'password')
-    create_then_view_posts(message: 'User One has written this.', user_id: user1.id)
-    create_user_and_sign_in
-    expect(page).not_to have_selector('.delete')
+  scenario "Removes post from database" do
+    expect(Post.all).to eq([])
   end
 end
