@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  before_action :authenticate_user!
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
+  before_action :authenticate_user!, except: [:new, :create]
 end

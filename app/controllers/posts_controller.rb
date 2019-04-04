@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def new
     @post = Post.new
   end
@@ -8,28 +9,28 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(post_params)
-    redirect_to posts_url
+    user = User.find(post_params[:user_id])
+    @post = user.posts.create(post_params)
+    render json: @post
   end
 
   def index
     @posts = Post.order("created_at DESC").all
+    render json: @posts, :include => {:user => {:only => :email}} 
   end
 
   def update
-    post = Post.find(params[:id])
+    post = Post.find(post_params[:id])
     post.update(post_params, current_user)
-    redirect_to posts_url
   end
 
   def destroy
     Post.destroy(params[:id])
-    redirect_to posts_url
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:message)
+    params.require(:post).permit(:message, :user_id, :id)
   end
 end
