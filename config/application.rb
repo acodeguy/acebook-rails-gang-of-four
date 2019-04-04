@@ -22,7 +22,7 @@ module Acebook
         resource '*', 
           :headers => :any, 
           expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'], 
-          :methods => [:get, :post, :delete, :put, :options]
+          :methods => [:get, :post, :patch, :delete, :put, :options]
       end
     end
   end

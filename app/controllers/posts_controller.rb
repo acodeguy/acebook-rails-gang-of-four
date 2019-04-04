@@ -20,9 +20,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
+    post = Post.find(post_params[:id])
     post.update(post_params, current_user)
-    redirect_to posts_url
   end
 
   def destroy
@@ -33,6 +32,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:message, :user_id)
+    params.require(:post).permit(:message, :user_id, :id)
   end
 end
