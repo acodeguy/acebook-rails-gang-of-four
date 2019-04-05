@@ -28,7 +28,9 @@ We have two key branches, staging and master. We create branches for each featur
 Once we have enough functionality for a release (e.g. a new feature as been added), we will push it to master via a pull request. This will trigger CI on Travis, which will then push it to the production environment on Heroku if the tests pass. 
 
 ## How to access app
-See the project: [Acebook - Gang of Four](https://acebook-gang-of-four.herokuapp.com)
+See the project: [Acebook - Gang of Four](https://acebook-gang-of-four.herokuapp.com).
+
+The frontend github can be found at https://github.com/simon-norman/acebook-gang-of-four-frontend.
 
 ## Trello board with user stories
 
