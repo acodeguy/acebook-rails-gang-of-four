@@ -11,10 +11,6 @@ class Post < ApplicationRecord
     belongs_to?(person) && created_within_last?(minutes: 10)
   end
 
-  def can_delete?(person)
-    belongs_to?(person)
-  end
-
   def belongs_to?(person) 
     return (user == person)
   end

@@ -1,13 +1,5 @@
 class PostsController < ApplicationController
 
-  def new
-    @post = Post.new
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-  end
-
   def create
     user = User.find(post_params[:user_id])
     @post = user.posts.create(post_params)
